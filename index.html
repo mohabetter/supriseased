@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5d6ba, #f0a6ca);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        h1 {
+            color: #ff6b6b;
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+            text-align: center;
+        }
+        p {
+            color: #555;
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            animation: slideIn 2s ease-in-out;
+            text-align: center;
+        }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+        .image-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #ff6b6b;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: fadeIn 2s ease-in-out;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff4b4b;
+        }
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 10px;
+        }
+        .lightbox:target {
+            display: flex;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2em;
+            text-decoration: none;
+        }
+        .balloons, .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+            display: none;
+        }
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background-color: rgba(255, 102, 102, 0.8);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: inset -15px -15px 0 rgba(255, 77, 77, 0.8);
+            animation: rise 5s infinite;
+        }
+        .balloon::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 50px;
+            background-color: rgba(255, 102, 102, 0.8);
+            bottom: -50px;
+            left: 50%;
+        }
+        @keyframes rise {
+            from { transform: translateY(100vh); }
+            to { transform: translateY(-100px); }
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            background-color: hsl(240, 100%, 50%);
+            opacity: 0.8;
+            transform-origin: left;
+            animation: fall 5s infinite, spin 3s infinite linear;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100%) rotate(0deg); }
+            100% { transform: translateY(100%) rotate(720deg); }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(720deg); }
+        }
+    </style>
+    <title>Happy Birthday!</title>
+</head>
+<body>
+    <h1>HAPPY BIRTHDAY AHMAD!!</h1>
+    <p>WISH U A HAPPY DAY BESTEST FRIEND</p>
+    <p>ME AND NATE DID THIS WEBSITE FOR U</p>
+    
+    <!-- Responsive Image Gallery -->
+    <div class="image-gallery">
+        <a href="#lightbox1"><img src="Lcake.jpg" alt="Birthday Image 1"></a>
+        <a href="#lightbox2"><img src="313rdP3.png" alt="Birthday Image 2"></a>
+        <a href="#lightbox3"><img src="weas.png" alt="Birthday Image 3"></a>
+        <!-- Add more images here -->
+    </div>
+    
+    <!-- Lightbox for Image 1 -->
+    <div id="lightbox1" class="lightbox">
+        <a href="#" class="lightbox-close">&times;</a>
+        <img src="Lcake.jpg" alt="Birthday Image 1">
+    </div>
+    
+    <!-- Lightbox for Image 2 -->
+    <div id="lightbox2" class="lightbox">
+        <a href="#" class="lightbox-close">&times;</a>
+        <img src="313rdP3.png" alt="Birthday Image 2">
+    </div>
+    
+    <!-- Lightbox for Image 3 -->
+    <div id="lightbox3" class="lightbox">
+        <a href="#" class="lightbox-close">&times;</a>
+        <img src="weas.png" alt="Birthday Image 3">
+    </div>
+
+    <div class="video-container">
+        <video class="left-video" controls width="800" height="450">
+            <source src="meows.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p class="overlay-paragraph">NATE DID THIS TO UU</p>
+    </div>
+    
+    
+    
+
+    <button onclick="celebrate()">Click me!</button>
+
+    <!-- Containers for Balloons and Confetti -->
+    <div class="balloons" id="balloonsContainer"></div>
+    <div class="confetti" id="confettiContainer"></div>
+
+    <script>
+        function celebrate() {
+            releaseBalloons();
+            releaseConfetti();
+        }
+
+        function releaseBalloons() {
+            const container = document.getElementById('balloonsContainer');
+            container.style.display = 'block';
+
+            for (let i = 0; i < 20; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.left = `${Math.random() * 100}%`;
+                balloon.style.animationDuration = `${Math.random() * 5 + 3}s`;
+                container.appendChild(balloon);
+            }
+
+            // Remove balloons after animation ends
+            setTimeout(() => {
+                container.innerHTML = '';
+                container.style.display = 'none';
+            }, 8000);
+        }
+
+        function releaseConfetti() {
+            const container = document.getElementById('confettiContainer');
+            container.style.display = 'block';
+
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti-piece';
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                confetti.style.animationDelay = `${Math.random() * 5}s`;
+                container.appendChild(confetti);
+            }
+
+            // Remove confetti after animation ends
+            setTimeout(() => {
+                container.innerHTML = '';
+                container.style.display = 'none';
+            }, 10000);
+        }
+    </script>
+</body>
+</html>
